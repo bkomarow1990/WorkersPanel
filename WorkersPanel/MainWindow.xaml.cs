@@ -43,11 +43,6 @@ namespace WorkersPanel
 
         private void addNewWorkerBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (mainViewModel.SelectedWorker == null)
-            {
-                MessageBox.Show("Please, select a worker");
-                return;
-            }
             EditRegisterWindow editRegisterWindow = new EditRegisterWindow(mainViewModel, false);
             editRegisterWindow.ShowDialog();
         }
