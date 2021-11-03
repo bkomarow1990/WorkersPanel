@@ -13,17 +13,26 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Border CornerRadius="20" BorderBrush="Black" BorderThickness="7" Margin="10">
-                <ListBox x:Name="workersListBox" Margin="10" ItemsSource="{Binding WorkerContext.WorkerList}" SelectedItem="{Binding SelectedWorker}">
+                <ListBox x:Name="workersListBox" Margin="10" ItemsSource="{Binding WorkerContext.WorkerList}" HorizontalContentAlignment="Stretch" SelectedItem="{Binding SelectedWorker}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <DockPanel Margin="5">
-                                <Image Width="100" Height="75" Source="{Binding Path=ImagePath}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                            <DockPanel Margin="5" Height="55" Grid.Column="0">
+                                <Image Height="45" Source="{Binding Path=ImagePath}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="10,0,25,0"/>
                                 <TextBlock FontSize="16" Text="{Binding Path=Name}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="16" Text="{Binding Path=Surname}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                <TextBlock FontSize="16" Text="{Binding StringFormat= ( {0} ), Path=Age}" DockPanel.Dock="Left" VerticalAlignment="Center" />
-                                <TextBlock FontSize="16" Text="IsActive" VerticalAlignment="Center" DockPanel.Dock="Right"></TextBlock>
-                                <CheckBox IsChecked="{Binding IsActive}" VerticalAlignment="Center" DockPanel.Dock="Right"  Margin="13,0,3,0"></CheckBox>
+                                <TextBlock FontSize="16" Text="{Binding StringFormat= ( {0} ), Path=Age}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="0,0,20,0"/>
+                               
                             </DockPanel>
+                                <DockPanel Grid.Column="1">
+                                    <CheckBox IsChecked="{Binding IsActive}" VerticalAlignment="Center" DockPanel.Dock="Left" HorizontalAlignment="Left"></CheckBox>
+                                    <TextBlock FontSize="16" Text="IsActive" VerticalAlignment="Center" DockPanel.Dock="Left" Margin="5,0,0,0"></TextBlock>
+                                </DockPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
